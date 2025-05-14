@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profil Pengguna</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #fafafa; }
+    .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 8px; text-align: center; }
+    img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; }
+    button { margin-top: 20px; padding: 10px; background-color: #dc3545; color: white; border: none; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Profil Pengguna</h2>
+    <img src="img/12345.jpg" alt="Foto Pengguna">
+
+    <p><strong>Nama Lengkap:</strong> Yazid Ramli</p>
+    <p><strong>Kelas:</strong> Perancangan dan Pemrograman Web</p>
+    <p><strong>Umur:</strong> <span id="umur"></span> tahun</p>
+    <p><strong>Alamat:</strong> <span id="alamat"></span></p>
+
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script>
+    // Hitung umur dari tanggal lahir
+    const birth = new Date(localStorage.getItem('birthdate'));
+    const today = new Date();
+    let age = today.getFullYear() - birth.getFullYear();
+    const m = today.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+      age--;
+    }
+
+    document.getElementById('umur').textContent = age;
+    document.getElementById('alamat').textContent = localStorage.getItem('address');
+
+    function logout() {
+      alert('Anda telah logout.');
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>

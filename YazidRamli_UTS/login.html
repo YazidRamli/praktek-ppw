@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #eef; padding: 20px; }
+    .container { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input { width: 100%; padding: 10px; margin-top: 5px; }
+    button { margin-top: 20px; width: 100%; padding: 12px; background-color: #28a745; color: white; border: none; border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Login</h2>
+  <form id="form-login">
+    <label for="email">Alamat Email</label>
+    <input type="email" id="email" required>
+
+    <label for="password">Kata Sandi</label>
+    <input type="password" id="password" required>
+
+    <button type="submit">Masuk</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById('form-login').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const emailInput = document.getElementById('email').value;
+    const passwordInput = document.getElementById('password').value;
+
+    const savedEmail = localStorage.getItem('email');
+    const savedPassword = localStorage.getItem('password');
+
+    if (emailInput === savedEmail && passwordInput === savedPassword) {
+      alert('Login berhasil!');
+      // Ini adalah perintah untuk pindah ke halaman profil
+      window.location.href = 'profil.html';
+    } else {
+      alert('Email atau kata sandi salah.');
+    }
+  });
+</script>
+
+</body>
+</html>
